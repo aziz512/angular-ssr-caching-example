@@ -50,7 +50,7 @@ export class BlogService {
       }), take(1));
     } else if (isPlatformBrowser(this.platformId)) {
       const savedValue = this.state.get(dataKey, null);
-      const observableToReturn = savedValue ? $dataSource.pipe(startWith(savedValue)) : $dataSource;
+      const observableToReturn = savedValue ? $dataSource.pipe(startWith(savedValue), take(1)) : $dataSource;
       return observableToReturn;
     }
   }
